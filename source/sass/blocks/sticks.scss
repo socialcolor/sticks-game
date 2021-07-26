@@ -24,23 +24,34 @@
   border-radius: 10px;
 }
 
-.sticks__stick {
-  width: 10px;
+.sticks__label {
+  width: 19px;
   height: 250px;
-  border: 1px solid red;
-  margin-right: 2px;
-  margin-left: 2px;
-  border-radius: 3px;
+  background: linear-gradient(317deg, #a7a68f82 30%, #a7a68f9c 100%);
+  box-shadow: 3px 4px 5px 0px #a09999;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 10px;
 
-  &--checked {
-    background: linear-gradient(to left, #227ca7 30%, #00d4ff 100%);
+  &:hover {
+    box-shadow: 3px 4px 9px 0px #a09999;
   }
 
-  &--hide {
-    display: none;
+  &:active {
+    background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
+  }
+
+  &--checked {
+    // background: linear-gradient(to left, #227ca7 30%, #00d4ff 100%);
+    background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
   }
 }
 
 .sticks__input {
-  display: block;
+  position: absolute;
+  font-size: 0;
+  height: 0;
+  width: 0;
+  clip: rect(0 0 0 0);
+  margin: -1px;
 }
