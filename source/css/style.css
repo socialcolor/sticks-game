@@ -114,8 +114,7 @@ body {
   padding: 5px 20px;
   box-shadow: 2px 3px 2px 0px #858484; }
   .buttons__delete:hover {
-    background-color: rgba(210, 210, 198, 0.9);
-    opacity: .3; }
+    background-color: rgba(210, 210, 198, 0.9); }
   .buttons__delete:active {
     box-shadow: inset 2px 3px 2px 0px #858484; }
 
