@@ -7,7 +7,8 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-family: 'Helvetica', 'Arial', sans-serif; }
 
 .hide {
   visibility: hidden; }
@@ -40,6 +41,7 @@ body {
   align-items: center; }
 
 .sticks__label {
+  position: relative;
   width: 19px;
   height: 250px;
   background: linear-gradient(317deg, #a7a68f82 30%, #a7a68f9c 100%);
@@ -51,11 +53,33 @@ body {
   .sticks__label::before {
     counter-increment: sticks;
     content: counter(sticks);
+    position: absolute;
     display: block;
+    width: 19px;
+    height: 19px;
     margin: auto;
-    margin-top: 10px;
     text-align: center;
-    color: #ffffff; }
+    color: #ffffff;
+    background: transparent;
+    border-radius: 10px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #7a7a77;
+    top: 0px; }
+  .sticks__label::after {
+    content: '';
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    display: block;
+    background: transparent;
+    border: 1px solid #7a7a77;
+    border-radius: 10px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    bottom: 0px; }
   .sticks__label:hover {
     box-shadow: 3px 4px 9px 0px #a09999; }
   .sticks__label:active {
