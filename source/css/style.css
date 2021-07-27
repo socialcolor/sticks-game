@@ -13,6 +13,12 @@ body {
 .hide {
   visibility: hidden; }
 
+.wrapper {
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+  text-align: center; }
+
 .sticks__wrapper {
   width: 100%;
   height: 100%;
@@ -104,20 +110,35 @@ body {
   clip: rect(0 0 0 0);
   margin: -1px; }
 
-.buttons {
-  text-align: center; }
-
-.buttons__delete {
+.button {
+  text-align: center;
   background-color: rgba(210, 210, 198, 0.5);
   border: 1px solid #858484;
   border-radius: 15px;
   font-size: 16px;
   text-transform: uppercase;
   padding: 5px 20px;
-  box-shadow: 2px 3px 2px 0px #858484; }
-  .buttons__delete:hover {
+  box-shadow: 2px 3px 2px 0px #858484;
+  margin: 10px auto; }
+  .button:hover {
     background-color: rgba(210, 210, 198, 0.9); }
-  .buttons__delete:active {
+  .button:active {
     box-shadow: inset 2px 3px 2px 0px #858484; }
+
+.info {
+  width: 100%;
+  max-width: 750px;
+  text-align: center;
+  margin: 30px auto; }
+
+.info__title {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'open-sans', 'arial', 'helvetica', sans-serif;
+  text-transform: uppercase; }
+
+.info__decription {
+  font-size: 16px;
+  font-family: 'open-sans', 'arial', 'helvetica', sans-serif; }
 
 /*# sourceMappingURL=style.css.map */

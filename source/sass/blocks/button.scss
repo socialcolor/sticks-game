@@ -1,8 +1,5 @@
-.buttons {
+.button {
   text-align: center;
-}
-
-.buttons__delete {
   background-color: rgba(210, 210, 198, 0.5);
   border: 1px solid #858484;
   border-radius: 15px;
@@ -10,6 +7,7 @@
   text-transform: uppercase;
   padding: 5px 20px;
   box-shadow: 2px 3px 2px 0px #858484;
+  margin: 10px auto;
 
   &:hover {
     background-color: rgba(210, 210, 198, 0.9);
@@ -18,5 +16,4 @@
   &:active {
     box-shadow: inset 2px 3px 2px 0px #858484;
   }
-
 }
