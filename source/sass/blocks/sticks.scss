@@ -44,19 +44,20 @@
     content: counter(sticks);
     // content: '';
     position: absolute;
+    top: 0px;
     display: block;
     width: 19px;
     height: 19px;
     margin: auto;
     text-align: center;
-    color: #ffffff;
+    color: #7a7a77;
     background: transparent;
     border-radius: 10px;
     border-left: none;
     border-right: none;
     border-top: none;
     border-bottom: 1px solid #7a7a77;
-    top: 0px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .25) 25%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .75) 75%, rgba(255, 255, 255, 1) 100%);
   }
 
   &::after {
@@ -64,6 +65,7 @@
     width: 19px;
     height: 19px;
     position: absolute;
+    bottom: 0px;
     display: block;
     background: transparent;
     border: 1px solid #7a7a77;
@@ -71,7 +73,7 @@
     border-left: none;
     border-right: none;
     border-bottom: none;
-    bottom: 0px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, .25) 25%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .75) 75%, rgba(255, 255, 255, 1) 100%);
   }
 
   &:hover {
