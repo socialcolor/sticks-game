@@ -1,44 +1,40 @@
 'use strict';
 
-const sticksGroup = document.querySelectorAll('.sticks__group');
+const sticksGroup = document.querySelectorAll('.sticks__label-wrapper');
 const sticksLabel = document.querySelectorAll('.sticks__label');
 const sticksInput = document.querySelectorAll('.sticks__input');
 const stickWrapper = document.querySelector('.sticks__wrapper');
 const hideButton = document.querySelector('.buttons button');
 
-const disabledSticks = (event, enable) => {
-  const eventGroup = event.target.parentElement;
-  if(enable) {
-    for(let input of sticksInput) {
-
-    }
-  } else {
-    for(let group of sticksGroup) {
-      if(group !== eventGroup) {
-        const sticksGroup = group.querySelectorAll('input');
-        for (let input of sticksGroup) {
-          input.disabled = true;
-        }
+const disabledSticks = (evt) => {
+  const eventGroup = evt.target.parentElement;
+  for (let group of sticksGroup) {
+    if (group !== eventGroup) {
+      const sticksGroup = group.querySelectorAll('input');
+      for (let input of sticksGroup) {
+        input.disabled = true;
+        input.closest('label').classList.add('sticks__label--opacity');
       }
     }
   }
-}
+};
 
 const enabledStick = () => {
   const label = document.querySelectorAll('.sticks__label--checked');
-  if(label.length === 0) {
+  if (label.length === 0) {
     for (let input of sticksInput) {
       input.disabled = false;
+      input.closest('label').classList.remove('sticks__label--opacity');
     }
   }
 }
 
-const onStickClick = function (event) {
-  event.stopPropagation();
-  const stickDisabled = event.target.querySelector('.sticks__input:not([disabled])')
+const onStickClick = function (evt) {
+  evt.stopPropagation();
+  const stickDisabled = evt.target.querySelector('.sticks__input:not([disabled])')
   if (stickDisabled) {
-    event.target.classList.toggle('sticks__label--checked');
-    disabledSticks(event);
+    evt.target.classList.toggle('sticks__label--checked');
+    disabledSticks(evt);
     enabledStick();
   }
 };

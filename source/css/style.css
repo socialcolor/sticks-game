@@ -14,7 +14,7 @@ body {
 
 .sticks__wrapper {
   width: 100%;
-  height: 500px;
+  height: 100%;
   margin: auto;
   padding: 30px 20px 30px;
   display: flex;
@@ -23,11 +23,8 @@ body {
   align-items: center; }
 
 .sticks__group {
+  counter-reset: sticks;
   width: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   max-width: 300px;
   max-width: 300px;
   height: 300px;
@@ -36,6 +33,12 @@ body {
   border-bottom: none;
   border-radius: 10px; }
 
+.sticks__label-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
 .sticks__label {
   width: 19px;
   height: 250px;
@@ -43,13 +46,29 @@ body {
   box-shadow: 3px 4px 5px 0px #a09999;
   margin-right: 5px;
   margin-left: 5px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  transition: all ease 300ms; }
+  .sticks__label::before {
+    counter-increment: sticks;
+    content: counter(sticks);
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    color: #ffffff; }
   .sticks__label:hover {
     box-shadow: 3px 4px 9px 0px #a09999; }
   .sticks__label:active {
     background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%); }
   .sticks__label--checked {
     background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%); }
+  .sticks__label--opacity {
+    opacity: 0.35;
+    box-shadow: initial; }
+    .sticks__label--opacity:hover {
+      box-shadow: initial; }
+    .sticks__label--opacity:active {
+      background: linear-gradient(317deg, #a7a68f82 30%, #a7a68f9c 100%); }
 
 .sticks__input {
   position: absolute;
@@ -61,5 +80,19 @@ body {
 
 .buttons {
   text-align: center; }
+
+.buttons__delete {
+  background-color: rgba(210, 210, 198, 0.5);
+  border: 1px solid #858484;
+  border-radius: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  box-shadow: 2px 3px 2px 0px #858484; }
+  .buttons__delete:hover {
+    background-color: rgba(210, 210, 198, 0.9);
+    opacity: .3; }
+  .buttons__delete:active {
+    box-shadow: inset 2px 3px 2px 0px #858484; }
 
 /*# sourceMappingURL=style.css.map */
