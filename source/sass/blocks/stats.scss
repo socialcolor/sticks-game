@@ -2,14 +2,24 @@
   width: 300px;
   height: 100%;
   margin: auto;
+}
+
+.stats__description {
+  text-align: center;
+  font-size: 16px;
+}
+
+.stats__wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 }
 
+
 .stats__player-name {
   margin: auto;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;;
 
