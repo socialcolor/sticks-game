@@ -1,0 +1,20 @@
+.stats {
+  width: 300px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stats__player-name {
+  margin: auto;
+  text-transform: uppercase;
+  font-weight: bold;;
+
+  &--active {
+    color: rgb(219, 47, 16);
+    border-bottom: 1px solid rgb(219, 47, 16);
+  }
+}

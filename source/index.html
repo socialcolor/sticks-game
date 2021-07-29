@@ -15,7 +15,11 @@
   <section class="info">
     <h1 class="info__title">Игра в палочки</h1>
     <p class="info_description">Каждый игрок поочередно забирает любое количество трубочек, но только из <strong>одной группы</strong>, проигрывает тот, кто забирает трубочки последним</p>
-    <button type="button" class="button">Играть</button>
+    <!-- <button type="button" class="button">Играть</button> -->
+  </section>
+  <section class="stats">
+    <div class="stats__player-name stats__player-name--active" contenteditable="true">Игрок 1</div>
+    <div class="stats__player-name" contenteditable="true">Игрок 2</div>
   </section>
   <section class="sticks">
     <div class="sticks__wrapper">
@@ -69,7 +73,7 @@
       </div>
     </div>
     <div class="wrapper">
-      <button type="button" class="button">Забрать трубочки</button>
+      <button type="button" class="button button--remove" disabled>Забрать трубочки</button>
     </div>
   </section>
   <script src="js/index.js"></script>
