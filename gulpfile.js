@@ -8,9 +8,8 @@ const {
 const browserSync = require('browser-sync').create(); // Автообновления страницы
 const plumber = require('gulp-plumber'); // Вывод ошибок в консоль
 const sourcemap = require('gulp-sourcemaps'); // Карта кода в браузере
-const sass = require('gulp-sass'); // Sass
+const sass = require('gulp-sass')(require('sass')); // Sass
 const del = require('del');
-sass.compiler = require('node-sass');
 
 const browsersync = () => {
   browserSync.init({
