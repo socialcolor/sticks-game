@@ -23,10 +23,15 @@ export const PlayerName = styled('span')<{$show?: boolean}>`
   text-transform: uppercase;
   font-weight: bold;
   outline: none;
-  border: none;
+  box-shadow: 0 3px 3px 0 ${({theme}) => theme.colors.black} ;
+
+  &:focus {
+    box-shadow: 0 3px 3px 0 ${({theme}) => theme.colors.red};
+  }
 
   ${({$show, theme}) => $show &&`
-      color: ${theme.colors.name};
-      border-bottom: 1px solid ${theme.colors.name};
+      color: ${theme.colors.red};
+      box-shadow: 0 3px 3px 0 ${theme.colors.red};
+      border-bottom: 1px solid ${theme.colors.red};
   `}
   `

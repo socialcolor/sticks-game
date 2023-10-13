@@ -11,7 +11,7 @@ const Stats = ():JSX.Element => {
     <S.Section>
       <S.Description>Ходит</S.Description>
        <S.Wrapper>
-        <S.PlayerName id={"playerOne"} onChange={onNameChange} contentEditable suppressContentEditableWarning={true}>{names.playerOne}</S.PlayerName>
+        <S.PlayerName id={"playerOne"} $show onChange={onNameChange} contentEditable suppressContentEditableWarning={true}>{names.playerOne}</S.PlayerName>
         <S.PlayerName id={"playerTwo"} onChange={onNameChange} contentEditable suppressContentEditableWarning={true}>{names.playerTwo}</S.PlayerName>
        </S.Wrapper>
     </S.Section>

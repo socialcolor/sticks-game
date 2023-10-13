@@ -1,6 +1,7 @@
 export interface IBaseTheme {
   colors: {
-    [keyof: string]: string,
+    red: string,
+    black: string
   }
   fonts: {
       openSans: string,
