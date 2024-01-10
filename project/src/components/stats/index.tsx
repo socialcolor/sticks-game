@@ -1,18 +1,24 @@
-import { useState } from 'react';
 import * as S from './style';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getPlayers } from '../../store/selectors';
+import { changeNamePlayerAction } from '../../store/playersSlice';
 
 const Stats = ():JSX.Element => {
-  const [names, setName] = useState({playerOne: 'Игрок 1', playerTwo: 'Игрок 2'})
+  const dispatch = useAppDispatch();
+  const players = useAppSelector(getPlayers());
+
   const onNameChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if(evt.currentTarget.id === 'playerOne' && evt.currentTarget.textContent) setName({playerOne: evt.currentTarget.textContent, playerTwo: names.playerTwo})
-    if(evt.currentTarget.id === 'playerTwo' && evt.currentTarget.textContent) setName({playerOne: names.playerOne, playerTwo: evt.currentTarget.textContent})
+    evt.preventDefault();
+    dispatch(changeNamePlayerAction({id: evt.target.id, name: evt.target.value}))
   }
+
+
   return (
     <S.Section>
       <S.Description>Ходит</S.Description>
        <S.Wrapper>
-        <S.PlayerName id={"playerOne"} $show onChange={onNameChange} contentEditable suppressContentEditableWarning={true}>{names.playerOne}</S.PlayerName>
-        <S.PlayerName id={"playerTwo"} onChange={onNameChange} contentEditable suppressContentEditableWarning={true}>{names.playerTwo}</S.PlayerName>
+        <S.PlayerName id={"playerOne"} $show onChange={onNameChange} type='text' value={players.playerOne}/>
+        <S.PlayerName id={"playerTwo"} onChange={onNameChange} type='text' value={players.playerTwo}/>
        </S.Wrapper>
     </S.Section>
   )

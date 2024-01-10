@@ -14,16 +14,20 @@ export const Wrapper = styled('div')`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 10px;
 `
-export const PlayerName = styled('span')<{$show?: boolean}>`
+export const PlayerName = styled('input')<{$show?: boolean}>`
   min-width: 70px;
   max-width: 300px;
   margin: auto;
+  padding: 5px 10px;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
   outline: none;
+  border: none;
   box-shadow: 0 3px 3px 0 ${({theme}) => theme.colors.black} ;
+  border-radius: 10px;
 
   &:focus {
     box-shadow: 0 3px 3px 0 ${({theme}) => theme.colors.red};

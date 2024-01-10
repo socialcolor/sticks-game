@@ -1,5 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../styles/theme';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import './default.css'
 import * as S from './style';
 import Info from '../info';
@@ -8,12 +10,14 @@ import Sticks from '../sticks';
 
 const App = (): JSX.Element => {
   return (
-    <ThemeProvider theme={baseTheme}>
-      <Info />
-      <Stats />
-      <Sticks />
-      <S.Button>Забрать трубочки</S.Button>
-    </ThemeProvider>
+    <DndProvider backend={HTML5Backend}>
+      <ThemeProvider theme={baseTheme}>
+        <Info />
+        <Stats />
+        <Sticks />
+        <S.Button>Забрать трубочки</S.Button>
+      </ThemeProvider>
+    </DndProvider>
   )
 }
 
