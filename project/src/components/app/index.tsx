@@ -7,6 +7,7 @@ import * as S from './style';
 import Info from '../info';
 import Stats from '../stats';
 import Sticks from '../sticks';
+import Trash from '../trash';
 
 const App = (): JSX.Element => {
   return (
@@ -14,6 +15,7 @@ const App = (): JSX.Element => {
       <ThemeProvider theme={baseTheme}>
         <Info />
         <Stats />
+        <Trash />
         <Sticks />
         <S.Button>Забрать трубочки</S.Button>
       </ThemeProvider>

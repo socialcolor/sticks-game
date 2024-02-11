@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-export const Stick = styled('li')`
+export const Stick = styled('li')<{$opacity: string, $dragged: boolean}>`
   position: relative;
   width: 19px;
-  height: 250px;
+  height: 100%;
+  max-height: 250px;
   background: linear-gradient(317deg, #a7a68f82 30%, #a7a68f9c 100%);
   box-shadow: 3px 4px 5px 0px #a09999;
   margin-right: 5px;
   margin-left: 5px;
   border-radius: 10px;
-  transition: all ease 300ms;
+  transition: box-shadow ease 300ms;
+  opacity: ${({$opacity}) => $opacity};
 
   &::before {
     content: '';
@@ -17,7 +19,7 @@ export const Stick = styled('li')`
     top: 0px;
     display: block;
     width: 100%;
-    height: 7%;
+    height: 1.1em;
     margin: auto;
     text-align: center;
     color: #7a7a77;
@@ -33,7 +35,7 @@ export const Stick = styled('li')`
   &::after {
     content: '';
     width: 100%;
-    height: 7%;
+    height: 1.1em;
     position: absolute;
     bottom: 0px;
     display: block;
@@ -47,10 +49,11 @@ export const Stick = styled('li')`
   }
 
   &:hover {
-    box-shadow: 3px 4px 9px 0px #a09999;
+    ${({$dragged}) => $dragged ? 'box-shadow: 3px 4px 9px 0px #a09999' : ''}
   }
 
   &:active {
-    background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
+    ${({$dragged}) => $dragged ? 'background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);' : ''}
+
   }
 `

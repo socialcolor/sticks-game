@@ -2,16 +2,21 @@ import { useDrag } from 'react-dnd';
 import * as S from './style';
 
 type StickProps = {
-  name: string
+  group: string;
+  stick: string;
 }
 
-const Stick = ({name}: StickProps) => {
-  const [, dragRef] = useDrag(() => ({
-    type: ' stick',
-    item: name
+const Stick = ({group, stick}: StickProps) => {
+  let dragged = true;
+  const [{ isDragging: opacity }, dragRef] = useDrag(() => ({
+    type: group,
+    item: {group, stick},
+    collect: (monitor) => (
+      {isDragging: monitor.isDragging() ? 0.4 : 1}
+    )
   }))
   return (
-    <S.Stick id={name} ref={dragRef} />
+    <S.Stick id={stick} ref={dragged ? dragRef : null} $dragged={dragged} $opacity={dragged ? opacity.toString() : '0.4'}/>
   )
 };
 
