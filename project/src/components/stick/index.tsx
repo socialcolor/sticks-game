@@ -10,17 +10,15 @@ type StickProps = {
 }
 
 const Stick = ({group, stick, trash}: StickProps) => {
-  const acceptGroup = useAppSelector(getAcceptGroup());
-
+ 
   let dragged = true;
 
-  const [{ isDragging: opacity, data }, dragRef] = useDrag(() => ({
+  const [{ isDragging: opacity }, dragRef] = useDrag(() => ({
     type: group,
     item: {group, stick, trash},
     collect: (monitor) => (
       {
         isDragging: monitor.isDragging() ? 0 : 1,
-        data: monitor.getItem()
       }
     )
   }))
