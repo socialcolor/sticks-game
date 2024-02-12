@@ -1,46 +1,31 @@
-import * as S from './style';
 import Stick from '../stick';
+import * as S from './style';
 import { useDrop } from 'react-dnd';
-import { useState } from 'react';
-import { baseTheme } from '../../styles/theme';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { getAcceptGroup } from '../../store/selectors';
-import { changeAcceptGroup, deleteSticks } from '../../store/sticksSlice';
+import { getAcceptGroup, getTrashSticks } from '../../store/selectors';
+import { addStickToTrash, changeAcceptGroup, deleteStick } from '../../store/sticksSlice';
 import { dataDropType } from '../../types/dnd';
-
-type dropStateType = {
-  group: string,
-  sticks: string[] | [],
-}
 
 const Trash = () => {
   const dispatch = useAppDispatch();
   const acceptGroup = useAppSelector(getAcceptGroup());
-  const [dropState, setDropState] = useState<dropStateType>({group: '', sticks: []})
+  const sticksTrash = useAppSelector(getTrashSticks());
 
-  const [{ color, brorderWidth }, drop] = useDrop({
+  const [{ isActive }, drop] = useDrop({
     accept: acceptGroup,
     drop: (data: dataDropType) => {
       dispatch(changeAcceptGroup(data.group))
-      dispatch(deleteSticks({group: data.group, stick: data.stick}))
-      setDropState(prevState => ({
-        ...prevState,
-        group: data.group,
-        sticks: [...prevState.sticks, data.stick]
-
-      }));
+      dispatch(addStickToTrash({ group: data.group, stick: data.stick }))
+      dispatch(deleteStick({ group: data.group, stick: data.stick }))
     },
     collect: (monitor) => (
-      { color: monitor.canDrop() ? baseTheme.colors.red : baseTheme.colors.black,
-        brorderWidth: monitor.canDrop() ? '2px' : '1px',
-      }
+      { isActive: monitor.canDrop() }
     )
   })
   return (
-    <S.Trash ref={drop} $color={color} $borderWidth={brorderWidth}>
-      Скидывать сюда
-      {dropState.sticks.map((stick) => <Stick group={dropState.group} stick={stick} key={`${dropState.group}-${stick}`}/>)}
-    </S.Trash>
+      <S.Trash ref={drop} $isActive={isActive}>
+        {sticksTrash.sticks.map((stick) => <Stick group={sticksTrash.group as string} trash={true} stick={stick} key={`${sticksTrash.group}-${stick}`} />)}
+      </S.Trash>
   )
 }
 

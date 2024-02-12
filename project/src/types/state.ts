@@ -1,6 +1,6 @@
 import { store } from "../store";
 
-export type Sticks = {
+export type initialStateType = {
   one: {
     disabled: boolean
     sticks: string[]
@@ -13,6 +13,11 @@ export type Sticks = {
     disabled: boolean
     sticks: string[]
   },
+  trash: {
+    isTrash: boolean,
+    group: string | null,
+    sticks: string[]
+  }
   acceptGroup: string[],
 }
 
@@ -20,10 +25,11 @@ export type Sticks = {
 export type Players = {
   [name: string]: string,
 }
+type SticksGroup = keyof initialStateType
 
-export type DeleteSticksAction = {
+export type sticksActionType = {
     payload: {
-      group: keyof Sticks,
+      group: SticksGroup,
       stick: string,
   }
 }

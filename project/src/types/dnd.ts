@@ -1,6 +1,7 @@
-import { Sticks } from './state';
+import { initialStateType } from './state';
 
 export type dataDropType = {
-  group: keyof Sticks,
+  group: keyof initialStateType,
   stick: string
+  trash: boolean
 }

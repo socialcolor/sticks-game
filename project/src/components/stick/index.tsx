@@ -1,22 +1,31 @@
 import { useDrag } from 'react-dnd';
 import * as S from './style';
+import { useAppSelector } from '../../hooks';
+import { getAcceptGroup } from '../../store/selectors';
 
 type StickProps = {
   group: string;
   stick: string;
+  trash: boolean;
 }
 
-const Stick = ({group, stick}: StickProps) => {
+const Stick = ({group, stick, trash}: StickProps) => {
+  const acceptGroup = useAppSelector(getAcceptGroup());
+
   let dragged = true;
-  const [{ isDragging: opacity }, dragRef] = useDrag(() => ({
+
+  const [{ isDragging: opacity, data }, dragRef] = useDrag(() => ({
     type: group,
-    item: {group, stick},
+    item: {group, stick, trash},
     collect: (monitor) => (
-      {isDragging: monitor.isDragging() ? 0.4 : 1}
+      {
+        isDragging: monitor.isDragging() ? 0 : 1,
+        data: monitor.getItem()
+      }
     )
   }))
   return (
-    <S.Stick id={stick} ref={dragged ? dragRef : null} $dragged={dragged} $opacity={dragged ? opacity.toString() : '0.4'}/>
+    <S.Stick id={stick} ref={dragRef} $opacity={dragged ? opacity.toString() : '0.4'}/>
   )
 };
 

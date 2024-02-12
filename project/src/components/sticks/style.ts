@@ -17,8 +17,7 @@ export const Wrapper = styled('div')`
   justify-content: center;
   align-items: flex-start;
 `
-export const Group = styled('ul')``
-export const Sticks = styled('ul')`
+export const Sticks = styled('ul')<{$active?: boolean}>`
   display: flex;
   width: 300px;
   height: 250px;
@@ -32,4 +31,6 @@ export const Sticks = styled('ul')`
   border-top: none;
   border-bottom: none;
   border-radius: 10px;
+  transition: background-color ease 350ms;
+  ${({$active}) => $active ? 'background-color: rgba(91,253,215, .66)' : ''}
 `

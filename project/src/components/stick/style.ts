@@ -1,6 +1,26 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-export const Stick = styled('li')<{$opacity: string, $dragged: boolean}>`
+const gradientChange = keyframes`
+  0% {
+    background: linear-gradient(317deg, #a7a68f82 30%, #a7a68f9c 100%);
+  }
+  20% {
+    background: linear-gradient(305deg, #8d8c7e82 30%, #95958a9c 100%);
+  }
+  40% {
+    background: linear-gradient(293deg, #7b7c7482 30%, #8a8c859c 100%);
+  }
+  60% {
+    background: linear-gradient(261deg, #63676a82 30%, #7982859c 100%);
+  }
+  80% {
+    background: linear-gradient(202deg, #52585b82 30%, #717a7e9c 100%);
+  }
+  100% {
+    background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
+  }
+`;
+export const Stick = styled('li')<{$opacity: string}>`
   position: relative;
   width: 19px;
   height: 100%;
@@ -49,11 +69,11 @@ export const Stick = styled('li')<{$opacity: string, $dragged: boolean}>`
   }
 
   &:hover {
-    ${({$dragged}) => $dragged ? 'box-shadow: 3px 4px 9px 0px #a09999' : ''}
+    box-shadow: 3px 4px 9px 2px #a09999;
   }
 
   &:active {
-    ${({$dragged}) => $dragged ? 'background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);' : ''}
-
+    animation: ${gradientChange} ease 150ms;
+    background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
   }
 `
