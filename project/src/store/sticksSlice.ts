@@ -34,7 +34,7 @@ export const sticksSlice = createSlice({
       };
     },
     addStick: (state: initialStateType, action: sticksActionType) => {
-      const group = state[action.payload.group] as { sticks: string[] };
+      const group = state[action.payload.group];
       if (group && 'sticks' in group) {
         group.sticks.push(action.payload.stick);
       }
@@ -56,10 +56,21 @@ export const sticksSlice = createSlice({
     },
     defaultAcceptGroup: (state: initialStateType) => {
       state.acceptGroup = ['one', 'two', 'three'];
+    },
+    makeToMoveAction: (state) => {
+       state.acceptGroup = ['one', 'two', 'three'];
+       state.one.disabled = false;
+       state.two.disabled = false;
+       state.three.disabled = false;
+       state.trash = {
+        isTrash: true,
+        group: null,
+        sticks: []
+      }
     }
   }
 })
 
-export const { deleteStick, addStick, addStickToTrash, deleteStickFromTrash, changeAcceptGroup, defaultAcceptGroup } = sticksSlice.actions;
+export const { deleteStick, addStick, addStickToTrash, deleteStickFromTrash, changeAcceptGroup, defaultAcceptGroup, makeToMoveAction } = sticksSlice.actions;
 
 export default sticksSlice.reducer;

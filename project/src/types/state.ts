@@ -23,7 +23,9 @@ export type initialStateType = {
 
 
 export type Players = {
-  [name: string]: string,
+  playerOne: string,
+  playerTwo: string,
+  active: 'playerOne' | 'playerTwo',
 }
 type SticksGroup = keyof initialStateType
 
@@ -39,7 +41,7 @@ export type ChangeAcceptGroupAcion = {
 }
 export type ChangeNameAction = {
   payload: {
-    id: keyof Players,
+    id: keyof Omit<Players, 'active'>,
     name: string,
   }
 }

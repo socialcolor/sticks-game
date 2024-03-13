@@ -16,7 +16,7 @@ export const Wrapper = styled('div')`
   align-items: flex-start;
   gap: 10px;
 `
-export const PlayerName = styled('input')<{$show?: boolean}>`
+export const PlayerName = styled('input')<{$active?: boolean}>`
   min-width: 70px;
   max-width: 300px;
   margin: auto;
@@ -33,7 +33,7 @@ export const PlayerName = styled('input')<{$show?: boolean}>`
     box-shadow: 0 3px 3px 0 ${({theme}) => theme.colors.red};
   }
 
-  ${({$show, theme}) => $show &&`
+  ${({$active, theme}) => $active &&`
       color: ${theme.colors.red};
       box-shadow: 0 3px 3px 0 ${theme.colors.red};
       border-bottom: 1px solid ${theme.colors.red};

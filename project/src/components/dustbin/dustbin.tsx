@@ -1,4 +1,4 @@
-import Stick from '../stick';
+import Stick from '../stick/stick';
 import * as S from './style';
 import { useDrop } from 'react-dnd';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -6,7 +6,7 @@ import { getAcceptGroup, getTrashSticks } from '../../store/selectors';
 import { addStickToTrash, changeAcceptGroup, deleteStick } from '../../store/sticksSlice';
 import { dataDropType } from '../../types/dnd';
 
-const Trash = () => {
+const Dustbin = () => {
   const dispatch = useAppDispatch();
   const acceptGroup = useAppSelector(getAcceptGroup());
   const sticksTrash = useAppSelector(getTrashSticks());
@@ -23,10 +23,10 @@ const Trash = () => {
     )
   })
   return (
-      <S.Trash ref={drop} $isActive={isActive}>
+      <S.Dustbin ref={drop} $isActive={isActive}>
         {sticksTrash.sticks.map((stick) => <Stick group={sticksTrash.group as string} trash={true} stick={stick} key={`${sticksTrash.group}-${stick}`} />)}
-      </S.Trash>
+      </S.Dustbin>
   )
 }
 
-export default Trash;
+export default Dustbin;

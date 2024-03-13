@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const gradientChange = keyframes`
   0% {
@@ -20,7 +20,7 @@ const gradientChange = keyframes`
     background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
   }
 `;
-export const Stick = styled('li')<{$opacity: string}>`
+export const Stick = styled('li')<{$opacity: string, $active: boolean}>`
   position: relative;
   width: 19px;
   height: 100%;
@@ -32,6 +32,7 @@ export const Stick = styled('li')<{$opacity: string}>`
   border-radius: 10px;
   transition: box-shadow ease 300ms;
   opacity: ${({$opacity}) => $opacity};
+  cursor: ${({$active}) => $active ? 'pointer' : 'initial'};
 
   &::before {
     content: '';
@@ -68,12 +69,16 @@ export const Stick = styled('li')<{$opacity: string}>`
     background: linear-gradient(0deg, rgba(255, 255, 255, .25) 25%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .75) 75%, rgba(255, 255, 255, 1) 100%);
   }
 
-  &:hover {
-    box-shadow: 3px 4px 9px 2px #a09999;
-  }
+  ${({$active}) => {
+    if($active) {
+     return css`&:hover {
+        box-shadow: 3px 4px 9px 2px #a09999;
+      }
 
-  &:active {
-    animation: ${gradientChange} ease 150ms;
-    background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
-  }
+      &:active {
+        animation: ${gradientChange} ease 150ms;
+        background: linear-gradient(123deg, #474a51b5 30%, #a2a8b78a 100%);
+      }`
+    }
+  }}
 `

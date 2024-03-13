@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Trash = styled.ul<{$isActive: boolean}>`
+export const Dustbin = styled.ul<{$isActive: boolean}>`
   position: relative;
   width: fit-content;
   min-width: 200px;

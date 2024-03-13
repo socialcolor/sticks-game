@@ -3,11 +3,11 @@ import { baseTheme } from '../../styles/theme';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './default.css'
-import * as S from './style';
-import Info from '../info';
-import Stats from '../stats';
-import Sticks from '../sticks';
-import Trash from '../trash';
+import Info from '../info/info';
+import Stats from '../stats/stats';
+import Sticks from '../sticks/sticks';
+import Dustbin from '../dustbin/dustbin';
+import Button from '../button/button';
 
 const App = (): JSX.Element => {
   return (
@@ -15,9 +15,9 @@ const App = (): JSX.Element => {
       <ThemeProvider theme={baseTheme}>
         <Info />
         <Stats />
-        <Trash />
+        <Dustbin />
+        <Button />
         <Sticks />
-        <S.Button>Забрать трубочки</S.Button>
       </ThemeProvider>
     </DndProvider>
   )
