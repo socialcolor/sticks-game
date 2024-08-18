@@ -17,8 +17,6 @@ export const Dustbin = styled.ul<{$isActive: boolean}>`
   border-bottom: none;
   border-radius: 10px;
 
-
-
   &::before {
     width: 100%;
     height: 100%;

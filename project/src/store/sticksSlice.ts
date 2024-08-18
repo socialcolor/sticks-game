@@ -19,7 +19,7 @@ export const initialState: initialStateType = {
     group: null,
     sticks: []
   },
-  acceptGroup: ['one', 'two', 'three']
+  acceptGroup: ['one', 'two', 'three'],
 }
 
 
@@ -29,15 +29,11 @@ export const sticksSlice = createSlice({
   reducers: {
     deleteStick: (state: initialStateType, action: sticksActionType) => {
       const group = state[action.payload.group];
-      if (group && 'sticks' in group) {
-        group.sticks = group.sticks.filter(stick => stick !== action.payload.stick)
-      };
+      group.sticks = group.sticks.filter(stick => stick !== action.payload.stick)
     },
     addStick: (state: initialStateType, action: sticksActionType) => {
       const group = state[action.payload.group];
-      if (group && 'sticks' in group) {
-        group.sticks.push(action.payload.stick);
-      }
+      group.sticks.push(action.payload.stick);
     },
     addStickToTrash: (state: initialStateType, action: sticksActionType) => {
       const { group, stick } = action.payload;

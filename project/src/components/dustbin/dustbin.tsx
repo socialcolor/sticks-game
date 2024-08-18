@@ -22,6 +22,7 @@ const Dustbin = () => {
       { isActive: monitor.canDrop() }
     )
   })
+
   return (
       <S.Dustbin ref={drop} $isActive={isActive}>
         {sticksTrash.sticks.map((stick) => <Stick group={sticksTrash.group as string} trash={true} stick={stick} key={`${sticksTrash.group}-${stick}`} />)}
