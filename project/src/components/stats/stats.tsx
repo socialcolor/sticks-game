@@ -1,4 +1,4 @@
-import * as S from './style';
+import * as S from './style.ts';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getActivePlayer, getPlayers } from '../../store/selectors';
 import { changeNamePlayerAction } from '../../store/playersSlice';
@@ -20,8 +20,8 @@ const Stats = ():JSX.Element => {
     <S.Section>
       <S.Description>Ходит</S.Description>
        <S.Wrapper>
-        <S.PlayerName id={"playerOne"} $active={activePlayer === 'playerOne'} onChange={onNameChange} type='text' value={players.playerOne}/>
-        <S.PlayerName id={"playerTwo"} $active={activePlayer === 'playerTwo'} onChange={onNameChange} type='text' value={players.playerTwo}/>
+        <S.PlayerName id={'playerOne'} $active={activePlayer === 'playerOne'} onChange={onNameChange} type='text' value={players.playerOne}/>
+        <S.PlayerName id={'playerTwo'} $active={activePlayer === 'playerTwo'} onChange={onNameChange} type='text' value={players.playerTwo}/>
        </S.Wrapper>
     </S.Section>
   )

@@ -1,4 +1,8 @@
-import { store } from "../store";
+import { store } from '../store';
+
+type gameStatusType = {
+  gameStatus: boolean
+}
 
 type Group = {
   disabled: boolean;
@@ -18,7 +22,7 @@ export type initialStateType = {
     sticks: string[]
   },
   acceptGroup: string[],
-} & Groups
+} & Groups & gameStatusType
 
 
 export type Players = {
@@ -34,6 +38,9 @@ export type sticksActionType = {
   }
 }
 
+export type changeGameStatusAction = {
+  payload: boolean
+}
 export type ChangeAcceptGroupAcion = {
   payload: string
 }
@@ -43,6 +50,7 @@ export type ChangeNameAction = {
     name: string,
   }
 }
+
 export type State = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;

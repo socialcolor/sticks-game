@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ChangeAcceptGroupAcion, sticksActionType, initialStateType } from '../types/state';
+import { ChangeAcceptGroupAcion, sticksActionType, initialStateType, changeGameStatusAction } from '../types/state';
 
 export const initialState: initialStateType = {
+  gameStatus: false,
   one: {
     disabled: false,
     sticks: ['one', 'two', 'three', 'four', 'five'],
@@ -22,11 +23,13 @@ export const initialState: initialStateType = {
   acceptGroup: ['one', 'two', 'three'],
 }
 
-
 export const sticksSlice = createSlice({
   name: 'sticks',
   initialState: initialState,
   reducers: {
+    changeGameStatus: (state: initialStateType, action: changeGameStatusAction) => {
+      state.gameStatus = action.payload;
+    },
     deleteStick: (state: initialStateType, action: sticksActionType) => {
       const group = state[action.payload.group];
       group.sticks = group.sticks.filter(stick => stick !== action.payload.stick)
@@ -67,6 +70,6 @@ export const sticksSlice = createSlice({
   }
 })
 
-export const { deleteStick, addStick, addStickToTrash, deleteStickFromTrash, changeAcceptGroup, defaultAcceptGroup, makeToMoveAction } = sticksSlice.actions;
+export const { changeGameStatus, deleteStick, addStick, addStickToTrash, deleteStickFromTrash, changeAcceptGroup, defaultAcceptGroup, makeToMoveAction } = sticksSlice.actions;
 
 export default sticksSlice.reducer;
