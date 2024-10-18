@@ -30,6 +30,10 @@ export type Players = {
   playerTwo: string,
   active: 'playerOne' | 'playerTwo',
 }
+export type ActionType = {
+  type: string,
+  payload?: unknown
+}
 
 export type sticksActionType = {
     payload: {

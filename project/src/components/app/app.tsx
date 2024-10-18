@@ -1,13 +1,15 @@
 import { useAppDispatch } from '../../hooks';
-import { changeActivePlayerAction } from '../../store/playersSlice';
+// import { changeActivePlayerAction } from '../../store/playersSlice';
 import { makeToMoveAction } from '../../store/sticksSlice';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../styles/theme';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ToastContainer } from 'react-toastify';
 import { useAppSelector } from '../../hooks/index.ts';
 import { getGameStatus } from '../../store/selectors.ts';
 import './default.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Info from '../info/info';
 import Stats from '../stats/stats.tsx';
 import Sticks from '../sticks/sticks';
@@ -24,7 +26,6 @@ const App = (): JSX.Element => {
   ) => {
     evt.preventDefault();
     dispatch(makeToMoveAction());
-    dispatch(changeActivePlayerAction());
   };
 
   return (
@@ -44,6 +45,7 @@ const App = (): JSX.Element => {
           </>
         )}
       </ThemeProvider>
+      <ToastContainer limit={3} />
     </DndProvider>
   );
 };
