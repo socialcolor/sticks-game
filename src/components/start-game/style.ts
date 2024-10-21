@@ -28,3 +28,15 @@ export const Button = styled('button')`
     box-shadow: 0 1px 3px 0 ${({ theme }) => theme.colors.red};
   }
 `;
+
+export const ConfigForm = styled('form')``;
+export const FieldSet = styled('fieldset')`
+  border-radius: 10px;
+`;
+export const Legend = styled('legend')`
+  text-align: left;
+`;
+export const Label  = styled('label')`
+  margin: 0 10px;
+`;
+export const Input = styled('input')``;

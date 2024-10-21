@@ -10,7 +10,7 @@ import { makeToMoveAction } from '../../store/sticksSlice';
 import { getGameStatus } from '../../store/selectors.ts';
 import * as S from './style.ts';
 import Info from '../info/info';
-import Stats from '../stats/stats.tsx';
+import Players from '../players/players.tsx';
 import Sticks from '../sticks/sticks';
 import Dustbin from '../dustbin/dustbin';
 import Button from '../button/button';
@@ -32,7 +32,7 @@ const App = (): JSX.Element => {
       <ThemeProvider theme={baseTheme}>
         {gameStatus ? (
           <S.Section>
-            <Stats />
+            <Players />
             <Dustbin />
             <Button onButtonClick={handleChangePlayerClick}>Сделать ход</Button>
             <Sticks />

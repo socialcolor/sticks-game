@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   ChangeAcceptGroupAcion,
   sticksActionType,
-  initialStateType,
-  changeGameStatusAction,
+  initialStateSticksType,
 } from '../types/state';
 
-export const initialState: initialStateType = {
+export const initialState: initialStateSticksType = {
   gameStatus: false,
   one: {
     disabled: false,
@@ -32,29 +31,26 @@ export const sticksSlice = createSlice({
   name: 'sticks',
   initialState: initialState,
   reducers: {
-    changeGameStatus: (
-      state: initialStateType,
-      action: changeGameStatusAction,
-    ) => {
-      state.gameStatus = action.payload;
-    },
-    deleteStick: (state: initialStateType, action: sticksActionType) => {
+    deleteStick: (state: initialStateSticksType, action: sticksActionType) => {
       const group = state[action.payload.group];
       group.sticks = group.sticks.filter(
         (stick) => stick !== action.payload.stick,
       );
     },
-    addStick: (state: initialStateType, action: sticksActionType) => {
+    addStick: (state: initialStateSticksType, action: sticksActionType) => {
       const group = state[action.payload.group];
       group.sticks.push(action.payload.stick);
     },
-    addStickToTrash: (state: initialStateType, action: sticksActionType) => {
+    addStickToTrash: (
+      state: initialStateSticksType,
+      action: sticksActionType,
+    ) => {
       const { group, stick } = action.payload;
       state.trash.group = group;
       state.trash.sticks.push(stick);
     },
     deleteStickFromTrash: (
-      state: initialStateType,
+      state: initialStateSticksType,
       action: sticksActionType,
     ) => {
       state.trash.sticks = state.trash.sticks.filter(
@@ -66,30 +62,29 @@ export const sticksSlice = createSlice({
       }
     },
     changeAcceptGroup: (
-      state: initialStateType,
+      state: initialStateSticksType,
       action: ChangeAcceptGroupAcion,
     ) => {
       state.acceptGroup = [action.payload];
     },
-    defaultAcceptGroup: (state: initialStateType) => {
+    defaultAcceptGroup: (state: initialStateSticksType) => {
       state.acceptGroup = ['one', 'two', 'three'];
     },
     makeToMoveAction: (state) => {
-        state.acceptGroup = ['one', 'two', 'three'];
-        state.one.disabled = false;
-        state.two.disabled = false;
-        state.three.disabled = false;
-        state.trash = {
-          isTrash: true,
-          group: null,
-          sticks: [],
-        };
+      state.acceptGroup = ['one', 'two', 'three'];
+      state.one.disabled = false;
+      state.two.disabled = false;
+      state.three.disabled = false;
+      state.trash = {
+        isTrash: true,
+        group: null,
+        sticks: [],
+      };
     },
   },
 });
 
 export const {
-  changeGameStatus,
   deleteStick,
   addStick,
   addStickToTrash,

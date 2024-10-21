@@ -1,8 +1,18 @@
 import { store } from '../store';
 
-type gameStatusType = {
-  gameStatus: boolean
+export enum GameTypes {
+  players = 'players',
+  computer = 'computers',
 }
+
+export enum Players {
+  player = 'Вы',
+  computer = 'Компьютер'
+}
+
+type gameStatusType = {
+  gameStatus: boolean;
+};
 
 type Group = {
   disabled: boolean;
@@ -15,46 +25,56 @@ export type Groups = {
   three: Group;
 };
 
-export type initialStateType = {
+export type initialStateSticksType = {
   trash: {
-    isTrash: boolean,
-    group: string | null,
-    sticks: string[]
-  },
-  acceptGroup: string[],
-} & Groups & gameStatusType
+    isTrash: boolean;
+    group: string | null;
+    sticks: string[];
+  };
+  acceptGroup: string[];
+} & Groups &
+  gameStatusType;
 
+export type initialStatePlayersType = {
+  playerOne: string;
+  playerTwo: string;
+  active: 'playerOne' | 'playerTwo';
+};
 
-export type Players = {
-  playerOne: string,
-  playerTwo: string,
-  active: 'playerOne' | 'playerTwo',
+export type initialStateGameType = {
+  gameStatus: boolean;
+  gameType: GameTypes;
 }
+
 export type ActionType = {
-  type: string,
-  payload?: unknown
-}
+  type: string;
+  payload?: unknown;
+};
 
 export type sticksActionType = {
-    payload: {
-      group: keyof Groups,
-      stick: string,
-  }
-}
+  payload: {
+    group: keyof Groups;
+    stick: string;
+  };
+};
 
 export type changeGameStatusAction = {
-  payload: boolean
-}
+  payload: {
+    gameStatus: boolean;
+    gameType: GameTypes;
+  };
+};
+
 export type ChangeAcceptGroupAcion = {
-  payload: string
-}
+  payload: string;
+};
+
 export type ChangeNameAction = {
   payload: {
-    id: keyof Omit<Players, 'active'>,
-    name: string,
-  }
-}
+    id: keyof Omit<initialStatePlayersType, 'active'>;
+    name: string;
+  };
+};
 
 export type State = ReturnType<typeof store.getState>;
-
 export type AppDispatch = typeof store.dispatch;
