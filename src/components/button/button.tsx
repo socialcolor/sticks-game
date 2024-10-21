@@ -1,9 +1,4 @@
-
-
-
-
-
-import * as S from './button-style';
+import * as S from './style';
 
 type ButtonProps = {
   onButtonClick: React.MouseEventHandler<HTMLButtonElement>,

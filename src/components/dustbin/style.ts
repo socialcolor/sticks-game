@@ -4,8 +4,8 @@ export const Dustbin = styled.ul<{$isActive: boolean}>`
   position: relative;
   width: fit-content;
   min-width: 200px;
-  height: 50px;
-  margin: 20px auto 0;
+  height: 100px;
+  margin: 20px auto 20px;
   padding: 10px;
   display: flex;
   align-items: center;

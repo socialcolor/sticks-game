@@ -1,5 +1,5 @@
-import Stick from '../stick/stick';
 import * as S from './style';
+import Stick from '../stick/stick';
 import { useDrop } from 'react-dnd';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getAcceptGroup, getTrashSticks } from '../../store/selectors';

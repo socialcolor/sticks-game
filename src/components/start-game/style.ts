@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const Section = styled('section')`
   width: 100%;
   max-width: 750px;
-  margin: 30px auto;
+  margin: 0;
   font-family: ${({ theme }) => theme.fonts.openSans};
   text-align: center;
 `;
 export const Button = styled('button')`
   min-width: 70px;
   max-width: 300px;
-  margin: auto;
+  margin: 0;
   padding: 5px 10px;
   font-size: 16px;
   text-transform: uppercase;

@@ -2,8 +2,8 @@ import { styled } from 'styled-components';
 
 export const Section = styled('section')`
   width: 300px;
-  height: 100%;
-  margin: auto;
+  height: auto;
+  margin: 0 auto;
 `
 export const Description = styled('p')`
   text-align: center;

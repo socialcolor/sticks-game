@@ -3,10 +3,10 @@ import { changeGameStatus } from '../../store/sticksSlice';
 import Button from '../button/button';
 import * as S from './style';
 
-const NewGame = () => {
+const StartGame = () => {
   const dispatch = useAppDispatch();
-  
-  const handleStartGameClick = () => dispatch(changeGameStatus(true))
+
+  const handleStartGameClick = () => dispatch(changeGameStatus(true));
 
   return (
     <S.Section>
@@ -15,4 +15,4 @@ const NewGame = () => {
   );
 };
 
-export default NewGame;
+export default StartGame;

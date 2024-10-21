@@ -2,8 +2,8 @@ import { styled } from 'styled-components'
 
 export const Section = styled('section')`
   width: auto;
-  height: 100%;
-  margin: auto;
+  height: auto;
+  margin: 0 auto;
   padding: 30px 5px 30px;
   display: flex;
   flex-direction: row;

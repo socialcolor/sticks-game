@@ -1,21 +1,20 @@
-import { useAppDispatch } from '../../hooks';
-// import { changeActivePlayerAction } from '../../store/playersSlice';
-import { makeToMoveAction } from '../../store/sticksSlice';
-import { ThemeProvider } from 'styled-components';
-import { baseTheme } from '../../styles/theme';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { ToastContainer } from 'react-toastify';
-import { useAppSelector } from '../../hooks/index.ts';
-import { getGameStatus } from '../../store/selectors.ts';
 import './default.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from 'styled-components';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { baseTheme } from '../../styles/theme';
+import { useAppSelector, useAppDispatch } from '../../hooks/index.ts';
+import { makeToMoveAction } from '../../store/sticksSlice';
+import { getGameStatus } from '../../store/selectors.ts';
+import * as S from './style.ts';
 import Info from '../info/info';
 import Stats from '../stats/stats.tsx';
 import Sticks from '../sticks/sticks';
 import Dustbin from '../dustbin/dustbin';
 import Button from '../button/button';
-import NewGame from '../new-game/new-game.tsx';
+import StartGame from '../start-game/start-game.tsx';
 
 const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -32,17 +31,17 @@ const App = (): JSX.Element => {
     <DndProvider backend={HTML5Backend}>
       <ThemeProvider theme={baseTheme}>
         {gameStatus ? (
-          <>
+          <S.Section>
             <Stats />
             <Dustbin />
             <Button onButtonClick={handleChangePlayerClick}>Сделать ход</Button>
             <Sticks />
-          </>
+          </S.Section>
         ) : (
-          <>
+          <S.Section>
             <Info />
-            <NewGame />
-          </>
+            <StartGame />
+          </S.Section>
         )}
       </ThemeProvider>
       <ToastContainer limit={3} />
